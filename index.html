@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Lunara | Trendy Short Kurtis for Girls</title>
+    <!-- Google Fonts & Font Awesome 6 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fefaf8;
+            color: #1e1e2f;
+            scroll-behavior: smooth;
+        }
+
+        /* Colors */
+        :root {
+            --primary: #c44569;
+            --primary-light: #f8a5c2;
+            --secondary: #f5cdb2;
+            --dark: #2d3e50;
+            --soft-bg: #fff6f2;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #fae1d4;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+        }
+
+        /* --- Lunara Logo (top left corner) --- */
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            font-size: 2rem;
+            color: #c44569;
+        }
+        .logo-text {
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #c44569, #e07a5f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo-text span {
+            font-weight: 400;
+            font-size: 1rem;
+            color: #8c6a5c;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #2c3e50;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #c44569;
+            border-bottom: 2px solid #c44569;
+            padding-bottom: 4px;
+        }
+
+        /* Pages */
+        .page {
+            display: none;
+            padding: 2rem 1.8rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            animation: fadeUp 0.4s ease;
+        }
+        .active-page {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(12px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            display: inline-block;
+            background: linear-gradient(120deg, #c44569, #c76e5a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        /* Design Grid (4 different designs) */
+        .design-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .design-card {
+            background: white;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
+            transition: all 0.25s ease;
+            text-align: center;
+        }
+        .design-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.15);
+        }
+        .design-img {
+            width: 100%;
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.4s;
+        }
+        .design-card:hover .design-img {
+            transform: scale(1.02);
+        }
+        .card-content {
+            padding: 1rem 1rem 1.2rem;
+        }
+        .design-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0.3rem 0;
+        }
+        .price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #c44569;
+            margin: 0.4rem 0;
+        }
+        .btn-shop {
+            background: #f9e2da;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            margin-top: 0.6rem;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #b94b6b;
+        }
+        .btn-shop:hover {
+            background: #c44569;
+            color: white;
+        }
+
+        /* slider for 4 specific kurtis (with your names & images placeholders) */
+        .slider-container {
+            background: #fff0ea;
+            border-radius: 2rem;
+            padding: 2rem 1rem;
+            margin: 2rem 0;
+        }
+        .slider-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+        .slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 1.8rem;
+            padding: 1rem 0.8rem 2rem;
+            scroll-behavior: smooth;
+        }
+        .slider::-webkit-scrollbar {
+            height: 6px;
+        }
+        .slider::-webkit-scrollbar-thumb {
+            background: #c44569;
+            border-radius: 20px;
+        }
+        .slide-item {
+            flex: 0 0 280px;
+            scroll-snap-align: start;
+            background: white;
+            border-radius: 1.6rem;
+            text-align: center;
+            padding: 1rem;
+            transition: 0.2s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        .slide-img {
+            width: 100%;
+            height: 270px;
+            object-fit: cover;
+            border-radius: 1.2rem;
+            background: #f8e7df;
+        }
+        .slide-title {
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin: 0.8rem 0 0.2rem;
+        }
+        .slide-price {
+            color: #c44569;
+            font-weight: 700;
+        }
+
+        /* other sections */
+        .about-text, .contact-info {
+            background: #fff7f2;
+            padding: 1.8rem;
+            border-radius: 2rem;
+            line-height: 1.5;
+        }
+        .product-highlight {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .product-card {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.03);
+        }
+        .service-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .service-card {
+            background: #ffffffdb;
+            backdrop-filter: blur(4px);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            width: 200px;
+            border: 1px solid #ffe0d0;
+        }
+        .contact-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: white;
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 60px;
+            margin-top: 0.5rem;
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f2e4dd;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 720px) {
+            nav { flex-direction: column; gap: 0.8rem; }
+            .logo-text { font-size: 1.5rem; }
+            .section-title { font-size: 1.7rem; }
+        }
+        i { margin-right: 6px; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo-area">
+        <i class="https://scontent.xx.fbcdn.net/v/t1.15752-9/683250023_1630922908127058_8506734386599917568_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_ohc=fWG_LsmGgr0Q7kNvwFmP438&_nc_oc=Adq_7l6BYR-biLuPem0oy8XsGxPOZF8wCOlGFXvparUCKYwCuKh98KYktkSEvDoRhPuarHiHShF5if-nzkzo55N1&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD5QGOzhDvN7O2g4fz9g4ZgneNgV0Mb_fCJOxbswzoN-7MjA&oe=6A1E4081"></i>
+        <div class="logo-text">LUNARA <span>✦ ethnic essence</span></div>
+    </div>
+    <div class="nav-links">
+        <a href="#" data-page="home" class="nav-link active">Home</a>
+        <a href="#" data-page="about" class="nav-link">About</a>
+        <a href="#" data-page="product" class="nav-link">Product</a>
+        <a href="#" data-page="services" class="nav-link">Services</a>
+        <a href="#" data-page="contact" class="nav-link">Contact</a>
+    </div>
+</nav>
+
+<!-- HOME PAGE -->
+<div id="home-page" class="page active-page">
+    <div style="text-align: center; margin-bottom: 0.8rem;">
+        <h1 class="section-title" style="font-size: 2.6rem;">Short Kurtis for the Smart Girl</h1>
+        <p style="color: #5d6e7e;">Student budget • Rs800 – Rs2000 • New trendy drops</p>
+    </div>
+
+    <!-- 4 DIFFERENT DESIGN CARDS with 4 DIFFERENT COLORS (original) -->
+    <div class="design-grid">
+        <div class="design-card"><div class="design-img" style="background-image: linear-gradient(125deg, #fbc4d0, #ff9eb5), url('https://scontent.cdninstagram.com/v/t1.15752-9/689069076_1425316929355402_2278621087400026551_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=103&ccb=7-5&_nc_sid=fc17b8&efg=eyJxZV9ncm91cHMiOlsiaWdkX2Jlc3RfZWZmb3J0X2ltYWdlOnRlc3QiXX0%3D&_nc_ohc=ee-TdjoLDekQ7kNvwFNemFG&_nc_oc=Ado0adYrl6w_WwtI1gJwTKHt_ckOV8MuwI4meXppqequpYbPTFEZ195N2BGpdxVI-NmXRwRiNP8kQtQR4hgeVCmB&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&oh=03_Q7cD5QEZucT-nkb5rX0BrtMjwlzShDIpKATLiJZtWlblW8I4aQ&oe=6A1E397A'); background-blend-mode: overlay;"></div><div class="card-content"><div class="design-name" style="color:#b13e5c;">🌸 Rosewood Bloom</div><p>Floral A-line, cotton blend</p><div class="price">Rs1,899</div><button class="btn-shop">Shop Now</button></div></div>
+        <div class="design-card"><div class="design-img" style="background-image: linear-gradient(125deg, #c8f0e7, #9eddcf), url('https://scontent.cdninstagram.com/v/t1.15752-9/682484606_1344995694120271_6062226792127737369_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=108&ccb=7-5&_nc_sid=fc17b8&efg=eyJxZV9ncm91cHMiOlsiaWdkX2Jlc3RfZWZmb3J0X2ltYWdlOnRlc3QiXX0%3D&_nc_ohc=j76WTmF330kQ7kNvwHo_8BS&_nc_oc=AdqhRqFqQMGg1vItHOdJ2RvXBeQuWcLanbsbIz75PVNBnrsgKZJG3wzaf-vEB2QRPWHajHgBl0podYetZwZwr-ka&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&oh=03_Q7cD5QEpW-sQlQO0rDdydRGm4nXDtw_cI4V9xp_TJ6aSEQWuNA&oe=6A1E5DCB'); background-blend-mode: overlay;"></div><div class="card-content"><div class="design-name" style="color:#2c7a64;">🍃 Mint Majestic</div><p>Pintuck puff sleeves</p><div class="price">Rs1,249</div><button class="btn-shop">Shop Now</button></div></div>
+        <div class="design-card"><div class="design-img" style="background-image: linear-gradient(125deg, #e3d6ff, #ccb0ff), url('https://scontent.cdninstagram.com/v/t1.15752-9/678283940_1646408636759036_8119127818848715968_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=103&ccb=7-5&_nc_sid=fc17b8&efg=eyJxZV9ncm91cHMiOlsiaWdkX2Jlc3RfZWZmb3J0X2ltYWdlOnRlc3QiXX0%3D&_nc_ohc=366rEuoiTPQQ7kNvwH1U8x2&_nc_oc=AdrOiNpvF51BKoKnq9PFYqDYqPvMseiq1THR7yyg7KwYC4gR9fHHTnfyFlqxZR5tozpIdsfiWmu8t64eOcfDwuLI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&oh=03_Q7cD5QEmaecS-E3jNSQxjpz1glgHOomD4-0DlPIkTwSUwRbGwQ&oe=6A1E398C'); background-blend-mode: overlay;"></div><div class="card-content"><div class="design-name" style="color:#7b4b9e;">💜 Lavender Dream</div><p>Embroidered yoke</p><div class="price">Rs999</div><button class="btn-shop">Shop Now</button></div></div>
+      <div class="design-card"><div class="design-img" style="background-image: linear-gradient(125deg, #ffd5a4, #ffbc70), url('https://scontent.cdninstagram.com/v/t1.15752-9/661714784_1636281497655626_6438755283091987188_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=101&ccb=7-5&_nc_sid=fc17b8&efg=eyJxZV9ncm91cHMiOlsiaWdkX2Jlc3RfZWZmb3J0X2ltYWdlOnRlc3QiXX0%3D&_nc_ohc=K-fFDRu-TFwQ7kNvwFK0gBg&_nc_oc=Adq2Pjem1nGz06Z863OxVBfjOwuy4C22RMmzVjIShhJsXYrkb0AfOZ2G_agNy_5lH0kPcUCpdsiopqIYtlrSZUqi&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&oh=03_Q7cD5QEyee0b19k-0tNcZ_ctax6LPy_aDHa56VcJB4pYqvC7GA&oe=6A1E484F'); background-blend-mode: overlay;"></div><div class="card-content"><div class="design-name" style="color:#c26a2e;">🌻 Saffron Shine</div><p>Mirror work rayon</p><div class="price">Rs1,599</div><button class="btn-shop">Shop Now</button></div></div>
+    </div>
+
+    <!-- SLIDER with 4 images: BLACK CLASSIC, BLACK BLOOM, BLUE BREEZE, PINK CHARM (image placeholders + your names) -->
+    <div class="slider-container">
+        <div class="slider-title">✨ Trending Now: Student Picks ✨</div>
+        <div class="slider">
+            <div class="slide-item">
+                <img class="slide-img" src="https://scontent.cdninstagram.com/v/t1.15752-9/680284580_1480493120226391_1715913804484269569_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=103&ccb=7-5&_nc_sid=fc17b8&efg=eyJxZV9ncm91cHMiOlsiaWdkX2Jlc3RfZWZmb3J0X2ltYWdlOnRlc3QiXX0%3D&_nc_ohc=dqHHR4GZkJQQ7kNvwGmXPDR&_nc_oc=AdpyowFc_GLB_hM4KIlYLYM-Ed-eU9kEKNLBo001KM2Rl1GY9OgiwOPzRIEIT8_5tgVbm7t9E_2O6OVmXx8EUjrc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&oh=03_Q7cD5QGjl2YX2cpexgauBsHFC6x9rwmAIC29kcyRKgT1DyEsvg&oe=6A1D87DD" alt="Black Classic Kurti">
+                <div class="slide-title">Black Classic</div>
+                <p>Solid chic, cotton weave</p>
+                <div class="slide-price">Rs899</div>
+            </div>
+            <div class="slide-item">
+                <img class="slide-img" src="https://scontent.cdninstagram.com/v/t1.15752-9/679556561_1465278155392020_4011993047359635151_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=101&ccb=7-5&_nc_sid=fc17b8&efg=eyJxZV9ncm91cHMiOlsiaWdkX2Jlc3RfZWZmb3J0X2ltYWdlOnRlc3QiXX0%3D&_nc_ohc=mvU9rNT_NhMQ7kNvwESJa_j&_nc_oc=Adrw0mnAm9Cm0h0bsPp2lo2fEQuPFNFHbk-kUrdc0cVUSBoxsYi-_H2fLukDFJ9CkpLmcUQ-nrkwR7rbTa3nkkCz&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&oh=03_Q7cD5QEH7HofyfwXZc9Z3yoJotl5QRLpxSwCfFf3Z0UdxUxkwg&oe=6A1DA4C0" alt="Black Bloom Kurti">
+                <div class="slide-title">Black Bloom</div>
+                <p>Embroidered floral, flowy</p>
+                <div class="slide-price">Rs1,649</div>
+            </div>
+            <div class="slide-item">
+                <img class="slide-img" src="https://scontent.cdninstagram.com/v/t1.15752-9/685138027_992277170001287_8969368168468527384_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=104&ccb=7-5&_nc_sid=fc17b8&efg=eyJxZV9ncm91cHMiOlsiaWdkX2Jlc3RfZWZmb3J0X2ltYWdlOnRlc3QiXX0%3D&_nc_ohc=2CAln96RaxoQ7kNvwFKs1K1&_nc_oc=AdrSRS51tIHWBf52D_4x0_-XSmf5dZLpzing5lZ-Goqhe3g41tbdSqyF8JUOcvwIyAp9y6teOyasupGG16SfD014&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&oh=03_Q7cD5QGXc7soPu0EUbNBPYUIRSAUU5eqnYBdnaig6n4adGzTcg&oe=6A1DB8C0" alt="Blue Breeze Kurti">
+                <div class="slide-title">Blue Breeze</div>
+                <p>Block print, breathable</p>
+                <div class="slide-price">Rs1,499</div>
+            </div>
+            <div class="slide-item">
+                <img class="slide-img" src="https://scontent.cdninstagram.com/v/t1.15752-9/678582529_1581912176210461_2514763276626499357_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=101&ccb=7-5&_nc_sid=fc17b8&efg=eyJxZV9ncm91cHMiOlsiaWdkX2Jlc3RfZWZmb3J0X2ltYWdlOnRlc3QiXX0%3D&_nc_ohc=lLJ0HMVyC5IQ7kNvwFnpS1l&_nc_oc=AdqudGwQj0qXUWUQVOPpRo26tcvF1GUROxh1YCBYVxLY9FqtI0ZMCq8plPC5Oo32Pkn4RlScMLDlEPQvaCKtD_nJ&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&oh=03_Q7cD5QHiespppdoTDXoAZwEjn-x3zSTLUIBGdn4d5hdUErVGDw&oe=6A1D9C8B" alt="Pink Charm Kurti">
+                <div class="slide-title">Pink Charm</div>
+                <p>Ruffle details, cotton</p>
+                <div class="slide-price">Rs1,999</div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 0.4rem;"><i class="fas fa-arrows-alt-h"></i> swipe → more styles</p>
+    </div>
+    <div style="background:#f7e9e2; border-radius: 1.8rem; padding: 1rem; text-align:center;">
+        <i class="fas fa-graduation-cap"></i> Student ID offer: extra 10% off | Call 9861929569 for bulk queries
+    </div>
+</div>
+
+<!-- ABOUT PAGE -->
+<div id="about-page" class="page">
+    <h2 class="section-title">About Lunara</h2>
+    <div class="about-text">
+        <p><strong>Lunara</strong> is a celebration of effortless kurtis for today's generation. We blend trending silhouettes with heritage details — all within Rs800–Rs2000. Every short kurti is designed for college, brunch, or festive evenings.</p>
+        <p style="margin-top: 0.8rem;">Different design with different colors each made with love for young women who want affordable fashion without compromising on style.</p>
+        <p><i class="fas fa-heart" style="color:#c44569;"></i> Ethically made & student-friendly.</p>
+    </div>
+</div>
+
+<!-- PRODUCT PAGE -->
+<div id="product-page" class="page">
+    <h2 class="section-title">Explore Our Latest</h2>
+    <div class="product-highlight">
+        <div class="product-card"><img src="https://scontent.cdninstagram.com/v/t1.15752-9/680284580_1480493120226391_1715913804484269569_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=103&ccb=7-5&_nc_sid=fc17b8&efg=eyJxZV9ncm91cHMiOlsiaWdkX2Jlc3RfZWZmb3J0X2ltYWdlOnRlc3QiXX0%3D&_nc_ohc=dqHHR4GZkJQQ7kNvwGmXPDR&_nc_oc=AdpyowFc_GLB_hM4KIlYLYM-Ed-eU9kEKNLBo001KM2Rl1GY9OgiwOPzRIEIT8_5tgVbm7t9E_2O6OVmXx8EUjrc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&oh=03_Q7cD5QGjl2YX2cpexgauBsHFC6x9rwmAIC29kcyRKgT1DyEsvg&oe=6A1D87DD" style="width:100%; border-radius: 1rem;"><h3>Black Classic</h3><p>Rs899</p><button class="btn-shop">View</button></div>
+        <div class="product-card"><img src="https://scontent.cdninstagram.com/v/t1.15752-9/679556561_1465278155392020_4011993047359635151_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=101&ccb=7-5&_nc_sid=fc17b8&efg=eyJxZV9ncm91cHMiOlsiaWdkX2Jlc3RfZWZmb3J0X2ltYWdlOnRlc3QiXX0%3D&_nc_ohc=mvU9rNT_NhMQ7kNvwESJa_j&_nc_oc=Adrw0mnAm9Cm0h0bsPp2lo2fEQuPFNFHbk-kUrdc0cVUSBoxsYi-_H2fLukDFJ9CkpLmcUQ-nrkwR7rbTa3nkkCz&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&oh=03_Q7cD5QEH7HofyfwXZc9Z3yoJotl5QRLpxSwCfFf3Z0UdxUxkwg&oe=6A1DA4C0" style="width:100%; border-radius: 1rem;"><h3>Black Bloom</h3><p>Rs1,649</p><button class="btn-shop">View</button></div>
+        <div class="product-card"><img src="https://scontent.cdninstagram.com/v/t1.15752-9/685138027_992277170001287_8969368168468527384_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=104&ccb=7-5&_nc_sid=fc17b8&efg=eyJxZV9ncm91cHMiOlsiaWdkX2Jlc3RfZWZmb3J0X2ltYWdlOnRlc3QiXX0%3D&_nc_ohc=2CAln96RaxoQ7kNvwFKs1K1&_nc_oc=AdrSRS51tIHWBf52D_4x0_-XSmf5dZLpzing5lZ-Goqhe3g41tbdSqyF8JUOcvwIyAp9y6teOyasupGG16SfD014&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&oh=03_Q7cD5QGXc7soPu0EUbNBPYUIRSAUU5eqnYBdnaig6n4adGzTcg&oe=6A1DB8C0" style="width:100%; border-radius: 1rem;"><h3>Blue Breeze</h3><p>Rs1,499</p><button class="btn-shop">View</button></div>
+        <div class="product-card"><img src="https://scontent.cdninstagram.com/v/t1.15752-9/678582529_1581912176210461_2514763276626499357_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=101&ccb=7-5&_nc_sid=fc17b8&efg=eyJxZV9ncm91cHMiOlsiaWdkX2Jlc3RfZWZmb3J0X2ltYWdlOnRlc3QiXX0%3D&_nc_ohc=lLJ0HMVyC5IQ7kNvwFnpS1l&_nc_oc=AdqudGwQj0qXUWUQVOPpRo26tcvF1GUROxh1YCBYVxLY9FqtI0ZMCq8plPC5Oo32Pkn4RlScMLDlEPQvaCKtD_nJ&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&oh=03_Q7cD5QHiespppdoTDXoAZwEjn-x3zSTLUIBGdn4d5hdUErVGDw&oe=6A1D9C8B" style="width:100%; border-radius: 1rem;"><h3>Pink Charm</h3><p>Rs1,999</p><button class="btn-shop">View</button></div>
+    </div>
+    <p style="background:#faf0ea; border-radius: 1.5rem; padding: 1rem;"><i class="fas fa-tag"></i> All kurtis Rs800 – Rs2000, inclusive of taxes & free shipping on orders Rs999+</p>
+</div>
+
+<!-- SERVICES PAGE -->
+<div id="services-page" class="page">
+    <h2 class="section-title">Student-first services</h2>
+    <div class="service-grid">
+        <div class="service-card"><i class="fas fa-credit-card fa-2x"></i><h3>Easy COD</h3><p>Pay at doorstep</p></div>
+        <div class="service-card"><i class="fas fa-exchange-alt fa-2x"></i><h3>14-day returns</h3><p>Hassle-free exchange</p></div>
+        <div class="service-card"><i class="fas fa-shipping-fast fa-2x"></i><h3>Free shipping*</h3><p>Above Rs999</p></div>
+        <div class="service-card"><i class="fas fa-tshirt fa-2x"></i><h3>Custom sizing</h3><p>Alteration support</p></div>
+    </div>
+    <div class="about-text"><i class="fas fa-gem"></i> Lunara Care: dedicated WhatsApp styling assistance on 9861929569.</div>
+</div>
+
+<!-- CONTACT PAGE with phone number -->
+<div id="contact-page" class="page">
+    <h2 class="section-title">Connect with Lunara</h2>
+    <div class="contact-info">
+        <div><i class="fas fa-phone-alt"></i> <strong>Call / SMS / WhatsApp</strong><br><span class="contact-number">9861929569</span></div>
+        <div><i class="fas fa-envelope"></i> lunara09@gmail.com</div>
+        <div><i class="fas fa-store"></i> Rupandehi,Butwal-10</div>
+        <div><i class="fab fa-instagram"></i> @lunara083</div>
+        <div><i class="fab fa-facebook"></i> Lunara</div>
+    </div>
+    <p style="margin-top: 1rem;">⭐ Reach out for student combos and college fest orders at 9861929569</p>
+</div>
+
+<footer>
+    <p>© 2025 LUNARA — short kurtis for the bold & beautiful | Price range: Rs800 to Rs2000</p>
+    <p><i class="fas fa-moon"></i> Designed with love for students</p>
+</footer>
+
+<script>
+    // Page navigation logic
+    const pages = {
+        home: document.getElementById('home-page'),
+        about: document.getElementById('about-page'),
+        product: document.getElementById('product-page'),
+        services: document.getElementById('services-page'),
+        contact: document.getElementById('contact-page')
+    };
+    const navLinks = document.querySelectorAll('.nav-links a');
+    function setActivePage(pageId) {
+        Object.values(pages).forEach(p => p?.classList.remove('active-page'));
+        if(pages[pageId]) pages[pageId].classList.add('active-page');
+        navLinks.forEach(link => {
+            const linkPage = link.getAttribute('data-page');
+            if(linkPage === pageId) link.classList.add('active');
+            else link.classList.remove('active');
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const page = link.getAttribute('data-page');
+            if(page) setActivePage(page);
+        });
+    });
+    setActivePage('home');
+
+    // shop buttons alert
+    document.querySelectorAll('.btn-shop').forEach(btn => {
+        btn.addEventListener('click', () => alert('✨ Added to your cart! ✨\nContact 9861929569 to confirm order & student discount.'));
+    });
+    // Note: The four images for Black Classic, Black Bloom, Blue Breeze, Pink Charm are currently high-quality placeholders.
+    // To replace with your actual images: edit the src inside .slide-img and product-highlight img tags.
+</script>
+</body>
+</html>
